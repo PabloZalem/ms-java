@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: mscartoes
+
+#A port 0 é uma porta randomica, isso server para não termos que subir na mão cada porta
+#Gerar as instancias em portas aleatórias
+server:
+  port: 0
+
+#Qual servidor eureka quero me registrar:
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value} }
