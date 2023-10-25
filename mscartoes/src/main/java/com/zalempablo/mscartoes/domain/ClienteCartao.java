@@ -1,22 +1,25 @@
 package com.zalempablo.mscartoes.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
 @Data
 public class ClienteCartao {
     @Id
-    @GeneratedValue(strategy = )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String cpf;
-    private Cartoes cartoes;
+    @ManyToMany
+    @JoinTable(name = "cliente_cartao_cartoes",
+            joinColumns = @JoinColumn(name = "cliente_cartao_id"),
+            inverseJoinColumns = @JoinColumn(name = "cartao_id"))
+    private List<Cartoes> cartoes;
     private BigDecimal limite;
 
 }
