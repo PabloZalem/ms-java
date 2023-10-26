@@ -4,6 +4,7 @@ import com.zalempablo.mscliente.domain.Clientes;
 import com.zalempablo.mscliente.infra.repository.ClienteRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -12,7 +13,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ClienteService {
 
-    private final ClienteRepository clienteRepository;
+    @Autowired
+    private ClienteRepository clienteRepository;
 
     @Transactional
     public Clientes save(Clientes cliente){

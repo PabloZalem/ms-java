@@ -1,5 +1,6 @@
 package com.zalempablo.mscliente.resource;
 
+import com.zalempablo.mscliente.domain.Clientes;
 import com.zalempablo.mscliente.representation.ClienteSaveRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,12 +20,12 @@ public class ClienteResources {
     @Autowired
     private ClienteService clienteService;
 
-    @GetMapping
+    /*@GetMapping
     public String status(){
         log.info("Obtendo o status do microsservico do cliente");
         return "ok";
     }
-
+*/
     @PostMapping
     public ResponseEntity save(@RequestBody ClienteSaveRequest request){
         var clientes = request.toModel();
@@ -38,7 +39,7 @@ public class ClienteResources {
     }
 
     @GetMapping(params = "cpf")
-    public ResponseEntity dadosClientes(@RequestParam String cpf){
+    public ResponseEntity dadosClientes(@RequestParam("cpf") String cpf){
         var clientes = clienteService.getByCpf(cpf);
         if(clientes.isEmpty()){
             return ResponseEntity.notFound().build();
