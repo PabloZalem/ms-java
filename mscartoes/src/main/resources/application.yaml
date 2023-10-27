@@ -1,6 +1,11 @@
 spring:
   application:
     name: mscartoes
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 #A port 0 é uma porta randomica, isso server para não termos que subir na mão cada porta
 #Gerar as instancias em portas aleatórias
@@ -14,3 +19,7 @@ eureka:
       defaultZone: http://localhost:8761/eureka
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value} }
+
+mq:
+  queues:
+    emissao-cartoes: emissao-cartoes
