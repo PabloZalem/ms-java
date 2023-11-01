@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CartaoService {
-    @Autowired
+
     private final CartoesRepository cartoesRepository;
 
     @Transactional

@@ -4,7 +4,6 @@ import com.zalempablo.mscartoes.domain.Cartoes;
 import com.zalempablo.mscartoes.domain.ClienteCartao;
 import com.zalempablo.mscartoes.dto.CartaoSaveRequest;
 import com.zalempablo.mscartoes.dto.ClienteCartaoResponse;
-import com.zalempablo.mscartoes.infra.repository.ClienteCartaoRepository;
 import com.zalempablo.mscartoes.service.CartaoService;
 import com.zalempablo.mscartoes.service.ClienteCartaoService;
 import lombok.RequiredArgsConstructor;

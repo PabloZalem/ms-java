@@ -22,11 +22,11 @@ public class ClienteCartaoResponse {
         // e atualize o código a seguir de acordo com a estrutura real da sua classe.
         List<Cartoes> cartoes = clienteCartao.getCartoes();
         String nomeCartao = cartoes != null && !cartoes.isEmpty() ? cartoes.get(0).getNome() : "";
-        String bandeiraDoCartao = cartoes != null && !cartoes.isEmpty() ? cartoes.get(0).getBandeiraDoCartao().toString() : "";
+        String bandeira = cartoes != null && !cartoes.isEmpty() ? cartoes.get(0).getBandeira().toString() : "";
 
         return new ClienteCartaoResponse(
                 nomeCartao,
-                bandeiraDoCartao,
+                bandeira,
                 clienteCartao.getLimite()
         );
     }

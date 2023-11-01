@@ -1,7 +1,6 @@
 package com.zalempablo.msavaliadordecredito.domain.model;
 
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Data
 @AllArgsConstructor

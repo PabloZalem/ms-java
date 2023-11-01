@@ -15,13 +15,13 @@ public class Cartoes {
         private Long id;
         private String nome;
         @Enumerated(EnumType.STRING)
-        private BandeiraDoCartao bandeiraDoCartao;
+        private BandeiraDoCartao bandeira;
         private BigDecimal renda;
         private BigDecimal limiteDoCartao;
 
     public Cartoes(String nome, BandeiraDoCartao bandeiraDoCartao, BigDecimal renda, BigDecimal limiteDoCartao) {
         this.nome = nome;
-        this.bandeiraDoCartao = bandeiraDoCartao;
+        this.bandeira = bandeiraDoCartao;
         this.renda = renda;
         this.limiteDoCartao = limiteDoCartao;
     }

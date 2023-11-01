@@ -1,13 +1,10 @@
 package com.zalempablo.msavaliadordecredito.controller;
 
-import com.zalempablo.msavaliadordecredito.domain.model.DadosAvaliacao;
-import com.zalempablo.msavaliadordecredito.domain.model.RetornoAvaliacaoCliente;
-import com.zalempablo.msavaliadordecredito.domain.model.SituacaoCliente;
+import com.zalempablo.msavaliadordecredito.domain.model.*;
 import com.zalempablo.msavaliadordecredito.ex.DadosClientesNotFoundException;
 import com.zalempablo.msavaliadordecredito.ex.ErroComunicacaoException;
 import com.zalempablo.msavaliadordecredito.service.AvaliadorDeCreditoService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,6 +38,17 @@ public class AvaliadorDeCreditoController {
             return ResponseEntity.notFound().build();
         } catch (ErroComunicacaoException e) {
             return ResponseEntity.status(HttpStatus.resolve(e.getStatus())).body(e.getMessage());
+        }
+    }
+
+    @PostMapping("/solitacoes-cartao")
+    public ResponseEntity solicitarCartao(@RequestBody DadosSolicitacaoDeCartao dados) {
+        try {
+            ProtocoloSolicitacaoCartao protocoloSolicitacaoCartao = (ProtocoloSolicitacaoCartao) avaliadorDeCartaoService
+                    .solicitarEmissaoDeCartao(dados);
+            return ResponseEntity.ok(protocoloSolicitacaoCartao);
+        }catch (ErroComunicacaoException e) {
+            return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
 }
